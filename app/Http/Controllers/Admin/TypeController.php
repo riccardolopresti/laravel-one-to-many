@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -58,9 +59,19 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Type $type)
     {
-        //
+        $form_data = $request->validate(
+            [
+                'name' => 'required'
+            ]
+        );
+
+        $form_data['slug'] = Str::slug($form_data['name']);
+
+        $type->update($form_data);
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
