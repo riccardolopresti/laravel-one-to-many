@@ -23,11 +23,23 @@
 
                 <div class="card-body">
 
-                    <div class="custom-action d-flex mb-3">
+                    <div class="custom-action d-flex">
                         <h4 class="card-title">{{$project->name}}</h4>
                         <a class="btn btn-outline-warning mx-2" href="{{route('admin.projects.edit', $project->slug)}}" role="button"><i class="fa-solid fa-pen"></i></a>
 
                         @include('admin.partials.delete-form')
+                    </div>
+
+                    <div class="type-entity my-1">
+                        <span class="badge rounded-pill  @if ($project->type?->name == 'Front-end')
+                            text-bg-success
+                        @elseif($project->type?->name == 'Back-end')
+                            text-bg-dark
+                        @else
+                            text-bg-primary
+                        @endif">
+                            {{$project->type?->name}}
+                        </span>
                     </div>
 
                     <h6 class="card-title">{{$project->client_name}}</h6>
