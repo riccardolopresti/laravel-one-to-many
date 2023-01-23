@@ -25,6 +25,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/projects/projects-type', [ProjectController::class, 'type_projects'])->name('type_projects');
         Route::resource('projects', ProjectController::class);
         Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/projects/{slug}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
