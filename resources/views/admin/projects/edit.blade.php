@@ -28,10 +28,26 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="client_name" class="form-label">Tipo di progetto</label>
+                        <select class="form-select" name="type_id">
+                            <option value="">Seleziona un tipo...</option>
+                            @foreach ($types as $type )
+                                <option
+                                @if ($type->id == old('type_id', $project->type?->id)) selected @endif
+                                value="{{$type->id}}">
+                                    {{$type->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="cover_image" class="form-label">Immagine*</label>
                         <input onchange="showImg(event)" type="file" class="form-control" id="cover_image" value="{{$project->cover_image}}" name="cover_image" placeholder="Immagine">
 
-                        <img id="output-image" src="{{asset('storage/' . $project->cover_image)}}" alt="{{asset('storage/' . $project->image_origianal_name)}}">
+                        @if ($project->cover_image)
+                            <img id="output-image" src="{{asset('storage/' . $project->cover_image)}}" alt="{{asset('storage/' . $project->image_origianal_name)}}">
+                        @endif
 
                     </div>
 

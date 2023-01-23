@@ -102,7 +102,9 @@ class ProjectController extends Controller
     {
         $project = Project::where('slug',$slug)->first();
 
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -136,7 +138,7 @@ class ProjectController extends Controller
 
         $project->update($form_data);
 
-        return redirect()->route('admin.projects.show', $project->slug)->with('update',"Post <strong>$project->name</strong> aggiornato correttamente");
+        return redirect()->route('admin.projects.show', $project->slug)->with('update',"Progetto <strong>$project->name</strong> aggiornato correttamente");
     }
 
     /**
