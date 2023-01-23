@@ -21,7 +21,7 @@
                     <form  action="{{route('admin.types.store')}}" method="POST">
                         @csrf
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="name" placeholder="Nuova categoria">
+                                    <input type="text" class="form-control" name="name" placeholder="Nuovo tipo">
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                                         <i class="fa-solid fa-circle-plus"></i>
                                         Aggiungi
@@ -33,7 +33,7 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Categoria</th>
+                        <th scope="col">Tipo</th>
                         <th scope="col">Numero Progetti</th>
                       </tr>
                     </thead>
