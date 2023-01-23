@@ -49,6 +49,20 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="client_name" class="form-label">Tipo di progetto</label>
+                        <select class="form-select" name="type_id">
+                            <option value="">Seleziona un tipo...</option>
+                            @foreach ($types as $type )
+                                <option
+                                @if ($type->id == old('type_id')) selected @endif
+                                value="{{$type->id}}">
+                                    {{$type->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="cover_image" class="form-label">Immagine*</label>
                         <input onchange="showImg(event)" type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" value="{{old('cover_image')}}" name="cover_image" placeholder="Immagine">
 
