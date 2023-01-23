@@ -59,19 +59,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Type $type)
+    public function edit($id)
     {
-        $form_data = $request->validate(
-            [
-                'name' => 'required'
-            ]
-        );
-
-        $form_data['slug'] = Str::slug($form_data['name']);
-
-        $type->update($form_data);
-
-        return redirect()->route('admin.types.index');
+        //
     }
 
     /**
@@ -81,9 +71,19 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Type $type)
     {
-        //
+        $form_data = $request->validate(
+            [
+                'name' => 'required|unique:types'
+            ]
+        );
+
+        $form_data['slug'] = Str::slug($form_data['name']);
+
+        $type->update($form_data);
+
+        return redirect()->back()->with('msg', "Tipo <strong>$request->name</strong> aggiornato correttamente");
     }
 
     /**
