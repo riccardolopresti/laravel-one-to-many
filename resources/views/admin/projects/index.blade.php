@@ -74,7 +74,18 @@
                         @forelse ($projects as $project )
                             <tr>
                                 <th scope="row">{{$project->id}}</th>
-                                <td>{{$project->name}}</td>
+                                <td>
+                                    {{$project->name}}
+                                    <span class="badge rounded-pill  @if ($project->type?->name == 'Front-end')
+                                        text-bg-success
+                                    @elseif($project->type?->name == 'Back-end')
+                                        text-bg-dark
+                                    @else
+                                        text-bg-primary
+                                    @endif">
+                                        {{$project->type?->name}}
+                                    </span>
+                                </td>
                                 <td>{{$project->client_name}}</td>
                                 <td>
                                     <a class="btn btn btn-outline-info" href="{{route('admin.projects.show', $project->slug)}}" role="button"><i class="fa-solid fa-eye"></i></a>
