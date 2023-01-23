@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <h1 class="text-uppercase text-black-50">Lista dei Progetti</h1>
+            <h1 class="text-uppercase text-black-50">Lista dei Progetti per tipo</h1>
             <div class="table-container pt-2 w-75">
                 <table class="table">
 

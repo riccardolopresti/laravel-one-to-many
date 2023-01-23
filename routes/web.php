@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Routing\Route as RoutingRoute;
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/projects/{slug}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
         Route::get('/projects/{column}/{direction}', [ProjectController::class, 'orderby'])->name('projects.orderby');
+        Route::resource('types', TypeController::class);
     });
 
 require __DIR__.'/auth.php';

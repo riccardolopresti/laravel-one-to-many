@@ -27,6 +27,19 @@
             </a>
         </li>
         <li class="list-group-item">
+            <a href="{{route('admin.types.index')}}">
+                <div class="wrapper-link d-flex">
+                    <div class="ico d-flex align-items-center">
+                        <i class="fa-solid fa-table-list"></i>
+                    </div>
+                    <div class="testo px-2">
+                        <span>Tipi</span>
+                    </div>
+                </div>
+
+            </a>
+        </li>
+        <li class="list-group-item">
             <a href="{{route('admin.type_projects')}}">
                 <div class="wrapper-link d-flex">
                     <div class="ico d-flex align-items-center">
