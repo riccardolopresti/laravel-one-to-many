@@ -15,7 +15,21 @@
                 </div>
             @endif
             <h1 class="text-uppercase text-black-50">Lista dei Tipi</h1>
-            <div class="table-container pt-2 w-50">
+            <div class="table-container pt-2 ">
+
+                <div class="w-75 ms-2 mt-2">
+                    <form  action="{{route('admin.types.store')}}" method="POST">
+                        @csrf
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="name" placeholder="Nuova categoria">
+                                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        Aggiungi
+                                    </button>
+                                </div>
+                    </form>
+                </div>
+
                 <table class="table">
                     <thead>
                       <tr>
@@ -27,12 +41,18 @@
                         @foreach ($types as $type)
                             <tr>
                                 <td class="d-flex">
-                                    <form  action="{{route('admin.types.update', $type)}}" method="POST">
+                                    <div class="update-form  me-2">
+                                        <form  action="{{route('admin.types.update', $type)}}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <input class="border-0 my-1" type="text" name="name" value="{{$type->name}}">
-                                        <button type="submit me-2" class="btn btn-warning">Modifica</button>
-                                    </form>
+                                        <button type="submit" class="btn btn-warning">Modifica</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="delete-form">
+                                        @include('admin.types.partials.delete-form')
+                                    </div>
 
                                 </td>
                                 <td><span class="badge text-bg-dark">{{count($type->projects)}}</span></td>

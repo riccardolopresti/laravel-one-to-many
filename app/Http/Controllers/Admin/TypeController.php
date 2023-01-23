@@ -39,7 +39,17 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->validate(
+            [
+                'name' => 'required|unique:types'
+            ]
+        );
+
+        $form_data['slug'] = Str::slug($form_data['name']);
+
+        Type::create($form_data);
+
+        return redirect()->back()->with('message', "Categoria $request->name creata correttamente");
     }
 
     /**
