@@ -18,6 +18,11 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function tags(){
+
+        return $this->belongsToMany(Tag::class);
+    }
+
     public static function SlugGenerator($string){
         $slug = Str::slug($string, '-');
         $original_slug = $slug;
